@@ -175,6 +175,11 @@
             background: #5d4e51;
         }
 
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
         .success-message {
             display: none;
             background: #d4edda;
@@ -190,18 +195,9 @@
             .services {
                 grid-template-columns: 1fr;
             }
-            
-            h1 {
-                font-size: 22px;
-            }
-            
-            .subtitle {
-                font-size: 14px;
-            }
-
-            .cta-text {
-                font-size: 18px;
-            }
+            h1 { font-size: 22px; }
+            .subtitle { font-size: 14px; }
+            .cta-text { font-size: 18px; }
         }
     </style>
 </head>
@@ -255,7 +251,7 @@
                     <div class="form-group">
                         <input type="tel" name="phone" placeholder="מספר טלפון" required>
                     </div>
-                    <button type="submit" class="btn">שלחו לי פרטים</button>
+                    <button type="submit" class="btn" id="submitBtn">שלחו לי פרטים</button>
                 </form>
 
                 <div class="success-message" id="successMessage">
@@ -266,5 +262,45 @@
     </div>
 
     <script>
-
         const WEBHOOK_URL = 'https://giladnom.app.n8n.cloud/webhook-test/9cb260ba-9d21-4644-bc1f-360f9a07f8ff';
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // שינוי כפתור למצב טעינה
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'שולח...';
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    alert('אופס! הייתה בעיה בשליחה. נסו שוב מאוחר יותר.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'שלחו לי פרטים';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('שגיאת תקשורת. בדקו את החיבור לאינטרנט.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'שלחו לי פרטים';
+            }
+        });
+    </script>
+</body>
+</html>

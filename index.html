@@ -16,6 +16,7 @@
             background: linear-gradient(135deg, #f5e6e8 0%, #d4c5c7 100%);
             min-height: 100vh;
             padding: 15px;
+            direction: rtl;
         }
 
         .container {
@@ -59,21 +60,7 @@
             padding: 25px 20px;
         }
 
-        .intro {
-            color: #5d4e51;
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .decorative-divider {
-            text-align: center;
-            margin: 25px 0;
-            color: #8b7377;
-            font-size: 24px;
-        }
-
+        /* שירותים - גריד */
         .services {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -96,20 +83,58 @@
             line-height: 1.4;
         }
 
-        .icon {
-            font-size: 32px;
-            margin-bottom: 8px;
+        .icon { font-size: 32px; margin-bottom: 8px; }
+
+        /* סקשן כרטיסים נגללים - נעים להכיר */
+        .about-section {
+            padding: 30px 0;
+            background-color: #fcf8f9;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 1px solid #e8d5d8;
         }
 
-        .visual-elements {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .balance-icon {
-            font-size: 50px;
+        .about-section h2 {
             color: #8b7377;
-            margin: 15px 0;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px 15px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .scroll-container::-webkit-scrollbar { display: none; }
+
+        .info-card {
+            flex: 0 0 280px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(139, 115, 119, 0.1);
+            border: 1px solid #f5e6e8;
+            scroll-snap-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            background: #fcf8f9;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
         }
 
         .quote-section {
@@ -120,6 +145,7 @@
             font-size: 14px;
             line-height: 1.6;
             text-align: center;
+            border-radius: 10px;
         }
 
         .cta-section {
@@ -130,32 +156,14 @@
             margin-bottom: 25px;
         }
 
-        .cta-text {
-            color: #5d4e51;
-            font-size: 20px;
-            margin-bottom: 20px;
-            line-height: 1.5;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
         input {
             width: 100%;
             padding: 12px;
             border: 2px solid #e8d5d8;
             border-radius: 10px;
-            font-size: 15px;
-            transition: border-color 0.3s;
+            margin-bottom: 15px;
             text-align: right;
-            direction: rtl;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #8b7377;
+            font-size: 16px;
         }
 
         .btn {
@@ -164,40 +172,26 @@
             padding: 12px 35px;
             border: none;
             border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
             width: 100%;
-            margin-top: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
         }
 
-        .btn:hover {
-            background: #5d4e51;
-        }
-
-        .btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
+        .btn:disabled { background: #ccc; }
 
         .success-message {
             display: none;
             background: #d4edda;
             color: #155724;
-            padding: 12px;
+            padding: 15px;
             border-radius: 10px;
             margin-top: 15px;
-            text-align: center;
-            font-size: 14px;
         }
 
         @media (max-width: 600px) {
-            .services {
-                grid-template-columns: 1fr;
-            }
-            h1 { font-size: 22px; }
-            .subtitle { font-size: 14px; }
-            .cta-text { font-size: 18px; }
+            .services { grid-template-columns: 1fr; }
+            .info-card { flex: 0 0 85%; } /* בנייד הכרטיס תופס כמעט את כל הרוחב */
         }
     </style>
 </head>
@@ -210,52 +204,52 @@
         </div>
 
         <div class="content">
-            <p class="intro">
-                לפעמים, כדי להתקדם, צריך מישהו שיעזור לנו לראות את הדרך.<br>
-                מישהו שיקשיב, ינתח, וינווט אותנו קדימה.
-            </p>
-
-            <div class="decorative-divider">✦ ✦ ✦</div>
-
             <div class="services">
-                <div class="service-item">
-                    <div class="icon">🎯</div>
-                    <h3>הצבת מטרות<br>וסדרי עדיפויות</h3>
-                </div>
-                <div class="service-item">
-                    <div class="icon">💼</div>
-                    <h3>הכנה למכרזים<br>וראיונות עבודה</h3>
-                </div>
-                <div class="service-item">
-                    <div class="icon">⚖️</div>
-                    <h3>כישורי ניהול<br>והעצמה אישית</h3>
-                </div>
+                <div class="service-item"><div class="icon">🎯</div><h3>הצבת מטרות<br>וסדרי עדיפויות</h3></div>
+                <div class="service-item"><div class="icon">💼</div><h3>הכנה למכרזים<br>וראיונות עבודה</h3></div>
+                <div class="service-item"><div class="icon">⚖️</div><h3>כישורי ניהול<br>והעצמה אישית</h3></div>
             </div>
 
-            <div class="visual-elements">
-                <div class="balance-icon">⚖️</div>
+            <div class="about-section">
+                <h2>נעים להכיר, אני יפית ✨</h2>
+                <p style="text-align: center; font-size: 13px; color: #8b7377; margin-bottom: 5px;">(גוללים הצידה כדי לקרוא עוד)</p>
+                <div class="scroll-container">
+                    <div class="info-card">
+                        <div class="card-icon">💼</div>
+                        <strong style="color: #8b7377;">מהמספרים אל האנשים</strong>
+                        <p style="font-size: 14px; line-height: 1.6; color: #5d4e51;">פרשתי ממשרד הביטחון אחרי קריירה כרו"ח וחשבונאית ראשית. השינוי נראה 180 מעלות, אבל בפועל תמיד עסקתי באנשים - אותם אני הכי אוהבת.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🌱</div>
+                        <strong style="color: #8b7377;">ליווי והעצמה</strong>
+                        <p style="font-size: 14px; line-height: 1.6; color: #5d4e51;">הייתי מנטורית ויועצת למנהלים, הכנתי עובדים לראיונות וועדות בוחנים. כיום אני מביאה את כל הניסיון הזה לקליניקה שלי במודיעין.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🎯</div>
+                        <strong style="color: #8b7377;">במה אני עוזרת?</strong>
+                        <p style="font-size: 14px; line-height: 1.6; color: #5d4e51;">אימון אישי לצמתי דרכים, ובהירות. לצד הכנה אופטימלית למכרזים וראיונות עבודה כדי שתביאו את עצמכם בצורה הכי נכונה למעסיק.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🌿</div>
+                        <strong style="color: #8b7377;">וקצת עלי...</strong>
+                        <p style="font-size: 14px; line-height: 1.6; color: #5d4e51;">אוהבת את המשפחה שלי, לשיר, לשחות וליהנות מהטבע. הניסיון הניהולי בשילוב התשוקה לפיתוח אנשים - זה מה שאני מביאה איתי.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="quote-section">
-                "אין חבוש מתיר עצמו מבית האסורים"<br>
-                לפעמים אנחנו זקוקים למבט חיצוני, אובייקטיבי, שיעזור לנו למצוא את הדרך.
+                "אין חבוש מתיר עצמו מבית האסורים"<br>לפעמים אנחנו זקוקים למבט חיצוני שיעזור לנו למצוא את הדרך.
             </div>
 
             <div class="cta-section">
-                <p class="cta-text">אם נגעתי בנקודה אצלכם, אשמח לשוחח יותר 😊</p>
-                
+                <p style="color: #5d4e51; font-weight: bold; margin-bottom: 15px;">אשמח לשוחח יותר 😊</p>
                 <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="שם מלא" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="phone" placeholder="מספר טלפון" required>
-                    </div>
+                    <input type="text" name="name" placeholder="שם מלא" required>
+                    <input type="tel" name="phone" placeholder="מספר טלפון" required>
                     <button type="submit" class="btn" id="submitBtn">שלחו לי פרטים</button>
                 </form>
-
                 <div class="success-message" id="successMessage">
-                    ✨ תודה! הפרטים נשלחו בהצלחה. יפית תחזור אליכם בהקדם.
+                    ✨ תודה! הפרטים נשלחו בהצלחה. יפית תחזור אליך בהקדם.
                 </div>
             </div>
         </div>
@@ -269,34 +263,28 @@
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // שינוי כפתור למצב טעינה
             submitBtn.disabled = true;
             submitBtn.innerText = 'שולח...';
 
             const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
+            const data = {
+                "שם מלא": formData.get('name'),
+                "טלפון": formData.get('phone')
+            };
 
             try {
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
 
                 if (response.ok) {
                     contactForm.style.display = 'none';
                     successMessage.style.display = 'block';
-                } else {
-                    alert('אופס! הייתה בעיה בשליחה. נסו שוב מאוחר יותר.');
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = 'שלחו לי פרטים';
-                }
+                } else { throw new Error(); }
             } catch (error) {
-                console.error('Error:', error);
-                alert('שגיאת תקשורת. בדקו את החיבור לאינטרנט.');
+                alert('קרתה שגיאה. ניתן לשלוח הודעה ישירה ליפית.');
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'שלחו לי פרטים';
             }
@@ -304,4 +292,3 @@
     </script>
 </body>
 </html>
-

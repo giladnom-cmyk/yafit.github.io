@@ -60,7 +60,7 @@
             padding: 25px 20px;
         }
 
-        /* שירותים - גריד */
+        /* שירותים - גריד עליון */
         .services {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -164,6 +164,11 @@
             margin-bottom: 15px;
             text-align: right;
             font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #8b7377;
         }
 
         .btn {
@@ -176,9 +181,11 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 16px;
+            transition: background 0.3s;
         }
 
-        .btn:disabled { background: #ccc; }
+        .btn:hover { background: #5d4e51; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
 
         .success-message {
             display: none;
@@ -187,11 +194,12 @@
             padding: 15px;
             border-radius: 10px;
             margin-top: 15px;
+            font-weight: bold;
         }
 
         @media (max-width: 600px) {
             .services { grid-template-columns: 1fr; }
-            .info-card { flex: 0 0 85%; } /* בנייד הכרטיס תופס כמעט את כל הרוחב */
+            .info-card { flex: 0 0 85%; }
         }
     </style>
 </head>
@@ -256,6 +264,7 @@
     </div>
 
     <script>
+        // חיבור לוובהוק של Make
         const WEBHOOK_URL = 'https://hook.eu2.make.com/3kjoovsh6j7eoxuye44nwwvxu9a1w9z3';
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
@@ -263,28 +272,40 @@
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            // מניעת לחיצות כפולות
             submitBtn.disabled = true;
             submitBtn.innerText = 'שולח...';
 
             const formData = new FormData(contactForm);
+            
+            // הכנת נתונים עבור Make
             const data = {
-                "שם מלא": formData.get('name'),
-                "טלפון": formData.get('phone')
+                "full_name": formData.get('name'),
+                "phone": formData.get('phone'),
+                "submitted_at": new Date().toLocaleString('he-IL'),
+                "source": "landing_page_yafit"
             };
 
             try {
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                     body: JSON.stringify(data)
                 });
 
                 if (response.ok) {
+                    // הצלחה - העלמת טופס והצגת הודעה
                     contactForm.style.display = 'none';
                     successMessage.style.display = 'block';
-                } else { throw new Error(); }
+                } else {
+                    throw new Error('Server Error');
+                }
             } catch (error) {
-                alert('קרתה שגיאה. ניתן לשלוח הודעה ישירה ליפית.');
+                console.error('Error:', error);
+                alert('אופס, קרתה תקלה קטנה בשליחה. אפשר לנסות שוב או ליצור קשר ישירות.');
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'שלחו לי פרטים';
             }
@@ -292,4 +313,3 @@
     </script>
 </body>
 </html>
-

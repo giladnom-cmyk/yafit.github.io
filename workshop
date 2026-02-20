@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סדנת הקסם שבבהירות - יפית ואפרת</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #008b99; /* צבע הטורקיז מהמודעה */
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #008b99;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .header h2 {
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 25px;
+            color: #fceea7; /* צבע צהבהב/זהב שמזכיר את המצפן */
+        }
+
+        /* הגדרות לתמונה קטנה יותר */
+        .instructors-img {
+            width: 100%;
+            max-width: 250px; /* הקטנתי מ-400 ל-250 */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            border: 3px solid rgba(255,255,255,0.2);
+            object-fit: cover;
+        }
+
+        .instructors-names {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .summary-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            color: #008b99;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .form-section h3 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #008b99;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: right;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #008b99;
+        }
+
+        .btn {
+            background-color: #f2c94c; /* צבע זהב/חרדל בולט לכפתור */
+            color: #333;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover { 
+            background-color: #e5bd45; 
+        }
+        
+        .btn:disabled { 
+            background: #ccc; 
+            cursor: not-allowed; 
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <h2 style="font-size: 24px; color: white; margin-bottom: 10px;">סדנת</h2>
+            <h1>הקסם שבבהירות</h1>
+            <h2>לגלות את הבחירה האישית ולהשלים איתה</h2>
+        </div>
+
+        <img src="https://i.ibb.co/ksf1xVfk/Whats-App-Image-2026-02-19-at-16-25-09-2.jpg" alt="יפית ואפרת" class="instructors-img">
+
+        <div class="instructors-names">
+            יפית נומברג - מאמנת ויועצת לקידום אישי<br>
+            אפרת אזולאי אפרים - מוסמכת NLP Practitioner
+        </div>
+
+        <div class="summary-box">
+            מרגישים תקיעות? עומדים בצומת החלטות וחווים עומס ובלבול?<br><br>
+            בסדנה החווייתית שלנו נבין יחד מה מפעיל אותנו, נלמד איך לעשות סדר במחשבות ונתרגם יכולות לכלים פרקטיים, כדי שתצאו עם "מצפן פנימי" ובהירות מלאה לגבי הבחירות שלכם.
+        </div>
+
+        <div class="form-section">
+            <h3>לפרטים נוספים והרשמה ✨</h3>
+            <form id="workshopForm">
+                <input type="text" name="name" placeholder="שם מלא" required>
+                <input type="tel" name="phone" placeholder="מספר טלפון" required>
+                <button type="submit" class="btn" id="submitBtn">שלחו לי פרטים</button>
+            </form>
+            <div class="success-message" id="successMessage">
+                תודה! הפרטים נשלחו בהצלחה. ניצור קשר בהקדם.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const WEBHOOK_URL = 'https://hook.eu2.make.com/3kjoovsh6j7eoxuye44nwwvxu9a1w9z3';
+        const workshopForm = document.getElementById('workshopForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        workshopForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'שולח...';
+
+            const formData = new FormData(workshopForm);
+            
+            const data = {
+                "full_name": formData.get('name'),
+                "phone": formData.get('phone'),
+                "submitted_at": new Date().toLocaleString('he-IL'),
+                "source": "landing_page_workshop_clarity"
+            };
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    workshopForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    throw new Error('Server Error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('אופס, קרתה תקלה קטנה בשליחה. נסו שנית.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'שלחו לי פרטים';
+            }
+        });
+    </script>
+</body>
+</html>

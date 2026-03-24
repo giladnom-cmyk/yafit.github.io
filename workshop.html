@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>סדנת הקסם שבבהירות - יפית ואפרת</title>
+    <title>טעימה מהסדנה - הקסם שבבהירות</title>
     <style>
         * {
             margin: 0;
@@ -44,9 +44,9 @@
         }
 
         .header h2 {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: normal;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             color: #fceea7; 
         }
 
@@ -72,10 +72,27 @@
             padding: 25px 20px;
             border-radius: 15px;
             margin-bottom: 30px;
-            font-size: 16px;
+            font-size: 17px;
             line-height: 1.6;
             border: 1px solid rgba(255,255,255,0.2);
+            text-align: right; /* שינוי לימין בשביל הרשימה */
+        }
+
+        .summary-box ul {
+            list-style-type: none;
+            padding: 10px 0;
+        }
+
+        .summary-box li {
+            margin-bottom: 8px;
+        }
+
+        .date-info {
+            font-weight: bold;
+            color: #fceea7;
+            margin-top: 15px;
             text-align: center;
+            font-size: 18px;
         }
 
         .form-section {
@@ -139,6 +156,7 @@
             border-radius: 10px;
             margin-top: 15px;
             font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
@@ -151,9 +169,8 @@
                 <a href="https://ibb.co/XZZTK4Wm"><img src="https://i.ibb.co/JRRPGdcX/Chat-GPT-Image-Feb-20-2026-04-06-03-PM.png" alt="לוגו הקסם שבבהירות" border="0"></a>
             </div>
             
-            <h2 style="font-size: 24px; color: white; margin-bottom: 10px;">סדנת</h2>
-            <h1>הקסם שבבהירות</h1>
-            <h2>לגלות את הבחירה האישית ולהשלים איתה</h2>
+            <h2>טעימה מתוך הסדנה:</h2>
+            <h1>הקסם שבבהירות ✨</h1>
         </div>
 
         <img src="https://i.ibb.co/ksf1xVfk/Whats-App-Image-2026-02-19-at-16-25-09-2.jpg" alt="יפית ואפרת" class="instructors-img">
@@ -164,8 +181,19 @@
         </div>
 
         <div class="summary-box">
-            בסדנה החווייתית שלנו נבין יחד מה מפעיל אותנו, נלמד לעשות סדר במחשבות ונתרגם יכולות לכלים פרקטיים.<br><br>
-            תצאו עם מודעות וחיבור ל"מצפן פנימי" שלכם ועם כלים להסתכלות בהירה יותר לגבי הבחירות שלכם, כמו גם השלמה איתן.
+            <p>אם את מרגישה שלאחרונה הכול נהיה יותר רועש, עמוס, מבלבל - אנו מזמינות אותך לעצור רגע ולחוות איך להכניס יותר בהירות לחיים.</p>
+            <br>
+            <p>במפגש הזום נטעם מסדנת הקסם שבבהירות כדי לחוות בהירות בתוך הבלאגן ולקבל:</p>
+            <ul>
+                <li>• רגע לעצמך בתוך השגרה המשובשת</li>
+                <li>• כלי פרקטי אחד לייצר בהירות</li>
+                <li>• חוויה של מרווח בין גירוי לתגובה</li>
+            </ul>
+            <div class="date-info">
+                מתי?<br>
+                29.3.26 יום א' | 20:00-21:00<br>
+                <span style="font-size: 15px; font-weight: normal;">קישור לזום יישלח לנרשמות</span>
+            </div>
         </div>
 
         <div class="form-section">
@@ -200,7 +228,7 @@
                 "full_name": formData.get('name'),
                 "phone": formData.get('phone'),
                 "submitted_at": new Date().toLocaleString('he-IL'),
-                "source": "landing_page_workshop_clarity"
+                "source": "landing_page_workshop_clarity_zoom"
             };
 
             try {

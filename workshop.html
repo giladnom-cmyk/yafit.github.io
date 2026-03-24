@@ -75,16 +75,34 @@
             font-size: 17px;
             line-height: 1.6;
             border: 1px solid rgba(255,255,255,0.2);
-            text-align: right; /* שינוי לימין בשביל הרשימה */
+            /* --- שינוי מרכזי: מירכוס הטקסט --- */
+            text-align: center; 
         }
 
         .summary-box ul {
-            list-style-type: none;
+            /* ביטול סימני הרשימה הסטנדרטיים */
+            list-style-type: none; 
             padding: 10px 0;
+            display: inline-block; /* מאפשר מירכוס של הבלוק כולו */
+            text-align: right; /* שומר על יישור ימין של הטקסט בתוך הבולט */
         }
 
         .summary-box li {
             margin-bottom: 8px;
+            position: relative;
+            padding-right: 20px; /* רווח לבולט המעוצב */
+        }
+
+        /* יצירת בולט מעוצב (נקודה אמצעית) */
+        .summary-box li::before {
+            content: "•"; 
+            color: #fceea7; /* צבע הבולט */
+            font-weight: bold;
+            display: inline-block;
+            width: 20px; 
+            margin-right: -20px;
+            position: absolute;
+            right: 0;
         }
 
         .date-info {
@@ -185,9 +203,9 @@
             <br>
             <p>במפגש הזום נטעם מסדנת הקסם שבבהירות כדי לחוות בהירות בתוך הבלאגן ולקבל:</p>
             <ul>
-                <li>• רגע לעצמך בתוך השגרה המשובשת</li>
-                <li>• כלי פרקטי אחד לייצר בהירות</li>
-                <li>• חוויה של מרווח בין גירוי לתגובה</li>
+                <li>רגע לעצמך בתוך השגרה המשובשת</li>
+                <li>כלי פרקטי אחד לייצר בהירות</li>
+                <li>חוויה של מרווח בין גירוי לתגובה</li>
             </ul>
             <div class="date-info">
                 מתי?<br>

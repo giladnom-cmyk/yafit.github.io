@@ -3,274 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טעימה מהסדנה - הקסם שבבהירות</title>
+    <title>סדנת הקסם שבבהירות - יפית ואפרת</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #008b99; 
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: #008b99;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .compass-logo img {
-            width: 180px; 
-            height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.15));
-        }
-
-        .header h1 {
-            font-size: 38px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-
-        .header h2 {
-            font-size: 24px;
-            font-weight: normal;
-            margin-bottom: 10px;
-            color: #fceea7; 
-        }
-
-        .instructors-img {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-            border: 3px solid rgba(255,255,255,0.2);
-            object-fit: cover;
-        }
-
-        .instructors-names {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .summary-box {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 25px 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            font-size: 17px;
-            line-height: 1.6;
-            border: 1px solid rgba(255,255,255,0.2);
-            /* --- שינוי מרכזי: מירכוס הטקסט --- */
-            text-align: center; 
-        }
-
-        .summary-box ul {
-            /* ביטול סימני הרשימה הסטנדרטיים */
-            list-style-type: none; 
-            padding: 10px 0;
-            display: inline-block; /* מאפשר מירכוס של הבלוק כולו */
-            text-align: right; /* שומר על יישור ימין של הטקסט בתוך הבולט */
-        }
-
-        .summary-box li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-right: 20px; /* רווח לבולט המעוצב */
-        }
-
-        /* יצירת בולט מעוצב (נקודה אמצעית) */
-        .summary-box li::before {
-            content: "•"; 
-            color: #fceea7; /* צבע הבולט */
-            font-weight: bold;
-            display: inline-block;
-            width: 20px; 
-            margin-right: -20px;
-            position: absolute;
-            right: 0;
-        }
-
-        .date-info {
-            font-weight: bold;
-            color: #fceea7;
-            margin-top: 15px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .form-section {
-            background-color: white;
-            padding: 30px 20px;
-            border-radius: 15px;
-            color: #008b99;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .form-section h3 {
-            margin-bottom: 20px;
-            font-size: 22px;
-            color: #008b99;
-        }
-
-        input {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            text-align: right;
-            font-size: 16px;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            border-color: #008b99;
-        }
-
-        .btn {
-            background-color: #f2c94c; 
-            color: #333;
-            padding: 14px 35px;
-            border: none;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 18px;
-            transition: background 0.3s;
-        }
-
-        .btn:hover { 
-            background-color: #e5bd45; 
-        }
+        :root { --main-color: #008b99; --accent-color: #fceea7; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--main-color); color: var(--white); line-height: 1.6; text-align: center; overflow-x: hidden; }
+        .container { max-width: 700px; margin: 0 auto; padding: 20px; }
         
-        .btn:disabled { 
-            background: #ccc; 
-            cursor: not-allowed; 
-        }
+        /* Typography */
+        h1 { font-size: 36px; margin-bottom: 10px; color: var(--accent-color); font-weight: bold; }
+        h2 { font-size: 26px; margin-bottom: 20px; color: var(--accent-color); border-bottom: 2px solid rgba(252, 238, 167, 0.3); padding-bottom: 10px; }
+        p { margin-bottom: 15px; font-size: 18px; }
 
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            font-weight: bold;
-            text-align: center;
-        }
+        /* Header & Logo */
+        .logo img { width: 160px; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+
+        /* General Sections */
+        .section { background: rgba(255,255,255,0.1); padding: 30px 20px; border-radius: 15px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.2); text-align: right; }
+        .section-center { text-align: center; }
+
+        /* Video Section */
+        .video-container { position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin-bottom: 30px; border: 4px solid var(--white); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Lists */
+        ul { list-style: none; padding-right: 5px; }
+        li { margin-bottom: 12px; position: relative; padding-right: 30px; font-size: 18px; }
+        li::before { content: "✔"; position: absolute; right: 0; color: var(--accent-color); font-weight: bold; font-size: 20px; }
+
+        /* Testimonials */
+        .testimonial { background: rgba(255, 255, 255, 0.05); padding: 20px; border-right: 4px solid var(--accent-color); margin-bottom: 15px; font-style: italic; font-size: 16px; border-radius: 0 10px 10px 0; }
+        .testimonial-author { display: block; margin-top: 10px; font-weight: bold; font-style: normal; color: var(--accent-color); }
+
+        /* About Section */
+        .about-box { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; background: rgba(0,0,0,0.1); padding: 15px; border-radius: 10px; }
+        .about-box img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--accent-color); object-fit: cover; }
+
+        /* Payment & CTA */
+        .cta-box { background: var(--white); color: var(--main-color); padding: 35px 25px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); margin-top: 40px; }
+        .pay-btn { display: inline-block; background: #ff6d5a; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 20px 0; font-size: 22px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,109,90,0.4); }
+        .pay-btn:hover { transform: scale(1.05); background: #e65a48; }
+        
+        input { width: 100%; padding: 15px; margin-bottom: 15px; border: 2px solid #e0e0e0; border-radius: 10px; text-align: right; font-size: 16px; font-family: inherit; }
+        .submit-btn { width: 100%; padding: 18px; background: var(--main-color); color: white; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #006b76; }
+        
+        .success-msg { display: none; color: #155724; background: #d4edda; padding: 20px; border-radius: 10px; margin-top: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <div class="header">
-            <div class="compass-logo">
-                <a href="https://ibb.co/XZZTK4Wm"><img src="https://i.ibb.co/JRRPGdcX/Chat-GPT-Image-Feb-20-2026-04-06-03-PM.png" alt="לוגו הקסם שבבהירות" border="0"></a>
-            </div>
-            
-            <h2>טעימה מתוך הסדנה:</h2>
-            <h1>הקסם שבבהירות ✨</h1>
-        </div>
+<div class="container">
+    <div class="logo">
+        <img src="https://i.ibb.co/JRRPGdcX/Chat-GPT-Image-Feb-20-2026-04-06-03-PM.png" alt="לוגו הקסם שבבהירות">
+    </div>
+    <p style="font-size: 20px; margin-bottom: 5px;">איך לייצר לעצמנו בהירות שמאפשרת לקבל החלטות נכונות עבורנו ולפעול מתוך שקט, גם כשלא הכל ודאי</p>
+    <h1>סדנת "הקסם שבבהירות" ✨</h1>
 
-        <img src="https://i.ibb.co/ksf1xVfk/Whats-App-Image-2026-02-19-at-16-25-09-2.jpg" alt="יפית ואפרת" class="instructors-img">
-
-        <div class="instructors-names">
-            יפית נומברג - מאמנת ויועצת לקידום אישי<br>
-            אפרת אזולאי אפרים - יועצת מיתוג אישי בתהליכי שינוי
-        </div>
-
-        <div class="summary-box">
-            <p>אם את מרגישה שלאחרונה הכול נהיה יותר רועש, עמוס, מבלבל - אנו מזמינות אותך לעצור רגע ולחוות איך להכניס יותר בהירות לחיים.</p>
-            <br>
-            <p>במפגש הזום נטעם מסדנת הקסם שבבהירות כדי לחוות בהירות בתוך הבלאגן ולקבל:</p>
-            <ul>
-                <li>רגע לעצמך בתוך השגרה המשובשת</li>
-                <li>כלי פרקטי אחד לייצר בהירות</li>
-                <li>חוויה של מרווח בין גירוי לתגובה</li>
-            </ul>
-            <div class="date-info">
-                מתי?<br>
-                29.3.26 יום א' | 20:00-21:00<br>
-                <span style="font-size: 15px; font-weight: normal;">קישור לזום יישלח לנרשמות</span>
-            </div>
-        </div>
-
-        <div class="form-section">
-            <h3>לפרטים נוספים והרשמה ✨</h3>
-            <form id="workshopForm">
-                <input type="text" name="name" placeholder="שם מלא" required>
-                <input type="tel" name="phone" placeholder="מספר טלפון" required>
-                <button type="submit" class="btn" id="submitBtn">שלחו לי פרטים</button>
-            </form>
-            <div class="success-message" id="successMessage">
-                תודה! הפרטים נשלחו בהצלחה. ניצור קשר בהקדם.
-            </div>
-        </div>
-
+    <div class="section">
+        <p>יש תקופות כאלה שבהן לא הכל ברור. זה תופס אותנו בבית עם המשפחה או בעבודה, או בתחושה כללית של ספק וחוסר ביטחון.</p>
+        <p>במצבים של אי־ודאות אנחנו חווים קושי להבין מה נכון לנו עכשיו ובעיקר הרגשה של חוסר שליטה.</p>
+        <ul style="margin-bottom: 20px;">
+            <li>אולי זו החלטה שאת/ה דוחה כבר זמן מה.</li>
+            <li>שיחה שלא נוח לך לקיים.</li>
+            <li>מרגיש/ה שאת/ה נותן/ת לכולם — אבל לא באמת לעצמך.</li>
+            <li>כיוון מקצועי שלא ברור אם ללכת עליו.</li>
+            <li>פער בין איך שרצית להיות כהורה/בן זוג — לבין איך שזה נראה בפועל.</li>
+        </ul>
+        <p>ככל שמנסים לחשוב על זה יותר, כך המחשבות מתרבות, ההתלבטות גדלה, והעומס רק מתגבר. כשאין לנו בהירות מבפנים, גם החלטות פשוטות מרגישות כבדות ומעיקות.</p>
     </div>
 
-    <script>
-        const WEBHOOK_URL = 'https://hook.eu2.make.com/3kjoovsh6j7eoxuye44nwwvxu9a1w9z3';
-        const workshopForm = document.getElementById('workshopForm');
-        const successMessage = document.getElementById('successMessage');
-        const submitBtn = document.getElementById('submitBtn');
+    <div class="section">
+        <h2>המצפן הפנימי שלך</h2>
+        <p>מה אם מה שחסר כאן הוא לא ידע או חשיבה, אלא מצפן פנימי שמאפשר לדעת מה נכון לנו, גם בתוך אי־ודאות?</p>
+        <p>באמצעות כלי "המצפן הפנימי" שפיתחנו, תלמדו איך לזהות מה באמת חשוב לכם - במקום מה "צריך", ואיך להשלים עם הבחירה שלכם.</p>
+        <h3 style="color: var(--accent-color); margin-top: 20px;">בסדנה תקבלו:</h3>
+        <ul>
+            <li>הנחייה לצד תרגול חווייתי</li>
+            <li>כלים ייחודיים ופרקטיים לניתוח וקבלת החלטות</li>
+            <li>הזדמנות להתבונן ולחקור מצבים אמיתיים מהחיים</li>
+            <li>חוויה עמוקה של הקשבה פנימית ותחושת רוגע</li>
+        </ul>
+    </div>
 
-        workshopForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'שולח...';
+    <div class="section-center">
+        <h2 style="border: none;">קבלו הצצה לסדנה 👇</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/BFudxhVibO4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
 
-            const formData = new FormData(workshopForm);
-            
-            const data = {
-                "full_name": formData.get('name'),
-                "phone": formData.get('phone'),
-                "submitted_at": new Date().toLocaleString('he-IL'),
-                "source": "landing_page_workshop_clarity_zoom"
-            };
+    <div class="section">
+        <h2>מה אמרו המשתתפים?</h2>
+        <div class="testimonial">
+            "היה מעניין ועמוק, ויחד עם זה השעות חלפו בזרימה קלילה... שילוב מאוזן ומצויין!"
+            <span class="testimonial-author">(א. בעלת עסק)</span>
+        </div>
+        <div class="testimonial">
+            "חוויה נהדרת, כזאת שהולכים הביתה ומעבדים בראש. משאיר טעם של עוד.."
+            <span class="testimonial-author">(ר. אישה בפנסיה)</span>
+        </div>
+        <div class="testimonial">
+            "סדנה אינטימית, מאפשרת הזדמנות להתבונן על הכוחות שמניעים אותנו... הייתן מדהימות!"
+            <span class="testimonial-author">(ח. עצמאית)</span>
+        </div>
+    </div>
 
-            try {
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
+    <div class="section">
+        <h2>הסדנה מתאימה לכם אם:</h2>
+        <ul>
+            <li>אתם נמצאים בצומת של החלטה (קטנה או גדולה)</li>
+            <li>חווים עומס ובלבול שמקשה להבין מה נכון עכשיו</li>
+            <li>חשוב לכם להרגיש בשליטה ולפעול מתוך חיבור לעצמכם</li>
+            <li>אתם מחפשים כלים פרקטיים ליומיום - לא רק השראה</li>
+        </ul>
+    </div>
 
-                if (response.ok) {
-                    workshopForm.style.display = 'none';
-                    successMessage.style.display = 'block';
-                } else {
-                    throw new Error('Server Error');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('אופס, קרתה תקלה קטנה בשליחה. נסו שנית.');
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'שלחו לי פרטים';
+    <div class="section">
+        <h2>מי אנחנו?</h2>
+        <div class="about-box">
+            <img src="https://i.ibb.co/ksf1xVfk/Whats-App-Image-2026-02-19-at-16-25-09-2.jpg" alt="יפית נומברג">
+            <p><strong>יפית נומברג:</strong> מאמנת ויועצת לקידום אישי. מביאה כלים פרקטיים, דיוק ויכולת לפשט מורכבות.</p>
+        </div>
+        <div class="about-box">
+            <img src="https://i.ibb.co/ksf1xVfk/Whats-App-Image-2026-02-19-at-16-25-09-2.jpg" alt="אפרת אזולאי אפרים">
+            <p><strong>אפרת אזולאי אפרים:</strong> יועצת מיתוג אישי בתהליכי שינוי. מביאה את עולם הסיפור והחיבור הפנימי.</p>
+        </div>
+        <p>יחד, יצרנו מרחב שהוא גם פרקטי וגם עמוק, המאפשר לכל משתתף לעבור תהליך אמיתי.</p>
+    </div>
+
+    <div class="section section-center">
+        <h2>פרטי המפגש</h2>
+        <p>📍 <strong>מיקום:</strong> קתדרה, מודיעין</p>
+        <p>🗓 <strong>תאריך:</strong> 24.5.2026</p>
+        <p>⏰ <strong>שעה:</strong> 19:00</p>
+        <p style="color: var(--accent-color); font-weight: bold;">⚠️ מספר המשתתפים מוגבל מאוד - הבטיחו מקומכם!</p>
+    </div>
+
+    <div class="cta-box" id="register">
+        <h2 style="color: #008b99;">הגיע הזמן לצאת מהלופ</h2>
+        <p>הבטיחו את מקומכם בסדנה בשני צעדים פשוטים:</p>
+        
+        <p><strong>1. תשלום להבטחת מקום:</strong></p>
+        <a href="YOUR_PAYBOX_LINK_HERE" class="pay-btn">לחצו כאן לתשלום ב-Paybox / Bit</a>
+
+        <p style="margin-top: 20px;"><strong>2. מילוי פרטים ואישור תשלום:</strong></p>
+        <form id="workshopForm">
+            <input type="text" name="name" placeholder="שם מלא" required>
+            <input type="tel" name="phone" placeholder="מספר טלפון" required>
+            <input type="text" name="payment_ref" placeholder="מספר אישור תשלום / טלפון משלם" required>
+            <button type="submit" class="submit-btn" id="submitBtn">שמרו לי מקום בסדנה</button>
+        </form>
+        <div class="success-msg" id="successMsg">איזה כיף! הפרטים נשלחו בהצלחה. ניפגש במודיעין ❤️</div>
+    </div>
+</div>
+
+<script>
+    const N8N_WEBHOOK = 'https://giladnom.app.n8n.cloud/webhook-test/42611202-ae43-4f37-bcf0-766b4a93ea95';
+    const form = document.getElementById('workshopForm');
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = 'שולח...';
+
+        const data = {
+            full_name: form.name.value,
+            phone: form.phone.value,
+            payment_ref: form.payment_ref.value,
+            submitted_at: new Date().toLocaleString('he-IL'),
+            source: "landing_page_modiin_workshop"
+        };
+
+        try {
+            const res = await fetch(N8N_WEBHOOK, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (res.ok) {
+                form.style.display = 'none';
+                msg.style.display = 'block';
+            } else {
+                alert('קרתה תקלה קטנה. אנא נסה שוב.');
+                btn.disabled = false;
+                btn.innerText = 'שמרו לי מקום בסדנה';
             }
-        });
-    </script>
+        } catch (err) {
+            console.error(err);
+            btn.disabled = false;
+        }
+    });
+</script>
+
 </body>
 </html>

@@ -79,6 +79,21 @@
         }
         h2 { font-size: 22px; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid rgba(252, 238, 167, 0.3); padding-bottom: 8px; }
 
+        /* סקטור "קראו עוד" מתקפל */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            text-align: right;
+        }
+        .read-more-wrapper {
+            background: rgba(252, 238, 167, 0.1);
+            border: 2px dashed var(--accent-color);
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-bottom: 25px;
+        }
+
         /* תמונות צוות */
         .profile-box { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
         .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--accent-color); object-fit: cover; flex-shrink: 0; }
@@ -207,15 +222,25 @@
         </div>
     </div>
 
-    <div class="section" style="background: rgba(252, 238, 167, 0.1); border: 2px dashed var(--accent-color);">
-        <a href="#register" class="cta-button" style="font-size: 16px;">אל תוותר על בהירות ביחס להחלטות שלכם - קראו עוד</a>
+    <div class="read-more-wrapper">
+        <button class="cta-button" style="font-size: 16px; margin: 10px 0;" id="readMoreBtn">אל תוותר על בהירות ביחס להחלטות שלכם - קראו עוד</button>
         
-        <div style="text-align: right; margin-top: 15px;">
-            <p><strong>להישאר בלי בהירות אומר:</strong></p>
-            <p>• חוויה של עומס פנימי, מחשבות שלא מפסיקות לרוץ ותחושת חוסר שקט</p>
-            <p>• התלבטות בין כיוונים ופעולה לא לפי סדרי עדיפויות</p>
-            <p>• חשיבה אינסופית על אותם דברים בלי להגיע לבהירות</p>
-            <p>• דחיית החלטות, או פעולה אימפולסיבית רק כדי “לסגור את זה”</p>
+        <div class="collapsible-content" id="extraInfo">
+            <div style="padding: 10px 0 20px 0;">
+                <p><strong>להישאר בלי בהירות אומר:</strong></p>
+                <p>• חוויה של עומס פנימי, מחשבות שלא מפסיקות לרוץ ותחושת חוסר שקט</p>
+                <p>• התלבטות בין כיוונים ופעולה לא לפי סדרי עדיפויות</p>
+                <p>• חשיבה אינסופית על אותם דברים בלי להגיע לבהירות</p>
+                <p>• דחיית החלטות, או פעולה אימפולסיבית רק כדי “לסגור את זה”</p>
+                
+                <p style="margin-top:15px;"><strong>לכן הסדנה מתאימה לכם אם חשוב לכם:</strong></p>
+                <p>• להרגיש יותר שקט ובהירות גם בתוך עומס ואי־ודאות</p>
+                <p>• להבין מה נכון עבורכם- ולא רק מה “נכון על הנייר”</p>
+                <p>• לצאת ממעגל של חשיבת יתר ולהיות בתנועה</p>
+                <p>• לפעול מתוך בחירה מודעת- ולא מתוך לחץ או דחייה</p>
+
+                <p style="margin-top:15px; font-style: italic;">אם זה מדבר אליכם — כנראה שאתם כבר יודעים שמשהו יכול להיות אחרת.</p>
+            </div>
         </div>
     </div>
 
@@ -254,6 +279,21 @@
 </div>
 
 <script>
+    // לוגיקה לפתיחה/סגירה של "קראו עוד"
+    const readMoreBtn = document.getElementById('readMoreBtn');
+    const extraInfo = document.getElementById('extraInfo');
+    
+    readMoreBtn.addEventListener('click', () => {
+        if (extraInfo.style.maxHeight && extraInfo.style.maxHeight !== "0px") {
+            extraInfo.style.maxHeight = "0px";
+            readMoreBtn.innerText = "אל תוותר על בהירות ביחס להחלטות שלכם - קראו עוד";
+        } else {
+            extraInfo.style.maxHeight = extraInfo.scrollHeight + "px";
+            readMoreBtn.innerText = "סגור מידע נוסף";
+        }
+    });
+
+    // שליחת הטופס למייק
     const WEBHOOK_URL = 'https://hook.eu2.make.com/3kjoovsh6j7eoxuye44nwwvxu9a1w9z3';
     const form = document.getElementById('landingForm');
     const btn = document.getElementById('submitBtn');
@@ -266,7 +306,7 @@
         const payload = {
             name: form.fullName.value,
             phone: form.phone.value,
-            source: 'modiin_workshop_v3_final',
+            source: 'modiin_workshop_v4_accordion',
             timestamp: new Date().toISOString()
         };
 

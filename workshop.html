@@ -25,7 +25,6 @@
 
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
 
-        /* כפתורים */
         .cta-button {
             display: inline-block;
             background-color: var(--accent-color);
@@ -43,12 +42,10 @@
         }
         .cta-button:active { transform: scale(0.95); }
 
-        /* לוגו וכותרות */
         .logo img { width: 150px; margin-bottom: 10px; }
         h1 { font-size: 32px; color: var(--accent-color); margin-bottom: 10px; line-height: 1.2; }
         .hero-subtitle { font-size: 19px; margin-bottom: 30px; display: block; font-weight: 500; }
 
-        /* בועות טקסט */
         .bubble-wrap { display: flex; flex-direction: column; gap: 10px; margin: 25px 0; }
         .bubble { 
             background: var(--white); 
@@ -68,7 +65,6 @@
             color: #333; 
         }
 
-        /* סקשנים */
         .section { 
             background: var(--bg-glass); 
             padding: 25px 20px; 
@@ -79,7 +75,6 @@
         }
         h2 { font-size: 22px; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid rgba(252, 238, 167, 0.3); padding-bottom: 8px; }
 
-        /* סקטור "קראו עוד" מתקפל */
         .collapsible-content {
             max-height: 0;
             overflow: hidden;
@@ -94,23 +89,9 @@
             margin-bottom: 25px;
         }
 
-        /* תמונות צוות */
         .profile-box { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
         .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--accent-color); object-fit: cover; flex-shrink: 0; }
 
-        /* וידאו */
-        .video-box {
-            position: relative;
-            padding-bottom: 177.77%; 
-            height: 0;
-            border-radius: 15px;
-            overflow: hidden;
-            margin: 20px 0;
-            border: 2px solid var(--white);
-        }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        /* המלצות */
         .testimonial {
             background: rgba(0,0,0,0.15);
             padding: 15px;
@@ -121,11 +102,9 @@
         }
         .author { display: block; margin-top: 8px; font-weight: bold; color: var(--accent-color); }
 
-        /* רשימות */
         .list-item { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 16px; }
         .list-item span { color: var(--accent-color); font-weight: bold; }
 
-        /* טופס */
         .form-container { 
             background: var(--white); 
             color: var(--main-color); 
@@ -145,7 +124,6 @@
             font-size: 18px; font-weight: bold; cursor: pointer;
         }
 
-        /* מובייל */
         @media (max-width: 480px) {
             h1 { font-size: 26px; }
             .profile-box { flex-direction: column; text-align: center; }
@@ -193,19 +171,19 @@
     <div class="section">
         <h2>מה אמרו המשתתפים?</h2>
         <div class="testimonial">
-            "יפית יקרה, איזה מפגש מדהים! היה מעניין ועמוק, ויחד עם זה השעות חלפו בזרימה קלילה..."
+            "יפית יקרה, איזה מפגש מדהים! היה מעניין ועמוק..."
             <span class="author">(א. בעלת עסק)</span>
         </div>
         <div class="testimonial">
-            "בשבילי זו הייתה חוויה נהדרת, כזאת שהולכים הביתה ומעבדים בראש. משאיר טעם של עוד.. אני נהניתי מאוד❤️"
+            "בשבילי זו הייתה חוויה נהדרת... נהניתי מאוד❤️"
             <span class="author">(ר. בפנסיה)</span>
         </div>
         <div class="testimonial">
-            "נהניתי מאוד, תודה רבה על הסדנה, תודה על ההזמנה 🩷 ממליצה באהבה."
+            "נהניתי מאוד, תודה רבה על הסדנה... ממליצה באהבה."
             <span class="author">(ל. בעלת עסק)</span>
         </div>
         <div class="testimonial">
-            "סדנא אינטימית, מאפשרת, הזדמנות להתבונן על הכוחות שמניעים אותנו... הייתן מדהימות, תודה על ההזדמנות."
+            "סדנא אינטימית, מאפשרת... הייתן מדהימות, תודה על ההזדמנות."
             <span class="author">(ח. בעלת עסק)</span>
         </div>
     </div>
@@ -233,10 +211,18 @@
         </div>
     </div>
 
+    <div class="section" style="text-align: center; border: 2px solid var(--accent-color);">
+        <h2>פרטי הסדנה</h2>
+        <p>📍 <strong>המרכז הרב תחומי, מודיעין</strong></p>
+        <p>🗓 <strong>יום ראשון, 24.5.2026</strong></p>
+        <p>⏰ <strong>19:00-21:00</strong></p>
+    </div>
+
     <div class="form-container" id="register">
         <h2 style="color: #008b99; border:none;">שמרו לי מקום בסדנה</h2>
         <form id="landingForm">
             <input type="text" name="fullName" placeholder="שם מלא" required>
+            <input type="email" name="email" placeholder="כתובת מייל" required>
             <input type="tel" name="phone" placeholder="מספר טלפון" required>
             <button type="submit" class="submit-btn" id="submitBtn">שמרו לי מקום</button>
         </form>
@@ -247,7 +233,6 @@
 <script>
     const readMoreBtn = document.getElementById('readMoreBtn');
     const extraInfo = document.getElementById('extraInfo');
-    
     readMoreBtn.addEventListener('click', () => {
         if (extraInfo.style.maxHeight && extraInfo.style.maxHeight !== "0px") {
             extraInfo.style.maxHeight = "0px";
@@ -267,9 +252,9 @@
         btn.disabled = true;
         btn.innerText = 'שולח...';
 
-        // ה-Payload שנקבע בדיוק לפי הפילטרים שלך
         const payload = {
             name: form.fullName.value,
+            email: form.email.value, // שדה חדש שהתווסף
             phone: form.phone.value,
             source: 'modiin_workshop_v5_full_testimonials',
             timestamp: new Date().toISOString()
@@ -292,6 +277,5 @@
         }
     });
 </script>
-
 </body>
 </html>

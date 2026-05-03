@@ -25,7 +25,6 @@
 
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
 
-        /* כפתורים */
         .cta-button {
             display: inline-block;
             background-color: var(--accent-color);
@@ -41,14 +40,11 @@
             cursor: pointer;
             border: none;
         }
-        .cta-button:active { transform: scale(0.95); }
 
-        /* לוגו וכותרות */
         .logo img { width: 150px; margin-bottom: 10px; }
         h1 { font-size: 32px; color: var(--accent-color); margin-bottom: 10px; line-height: 1.2; }
         .hero-subtitle { font-size: 19px; margin-bottom: 30px; display: block; font-weight: 500; }
 
-        /* בועות טקסט */
         .bubble-wrap { display: flex; flex-direction: column; gap: 10px; margin: 25px 0; }
         .bubble { 
             background: var(--white); 
@@ -59,7 +55,6 @@
             max-width: 85%;
             font-weight: 500;
             text-align: right;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         }
         .bubble:nth-child(even) { 
             align-self: flex-end; 
@@ -68,7 +63,6 @@
             color: #333; 
         }
 
-        /* סקשנים */
         .section { 
             background: var(--bg-glass); 
             padding: 25px 20px; 
@@ -79,12 +73,32 @@
         }
         h2 { font-size: 22px; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid rgba(252, 238, 167, 0.3); padding-bottom: 8px; }
 
-        /* סקטור "קראו עוד" מתקפל */
+        /* עיצוב הוידאו - מותאם ל-Shorts (אנכי) */
+        .video-container {
+            max-width: 315px;
+            margin: 0 auto 25px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%; /* יחס 9:16 לסרטון אנכי */
+            height: 0;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         .collapsible-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-out;
-            text-align: right;
         }
         .read-more-wrapper {
             background: rgba(252, 238, 167, 0.1);
@@ -94,50 +108,20 @@
             margin-bottom: 25px;
         }
 
-        /* תמונות צוות */
         .profile-box { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--accent-color); object-fit: cover; flex-shrink: 0; }
+        .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--accent-color); object-fit: cover; }
 
-        /* וידאו */
-        .video-box {
-            position: relative;
-            padding-bottom: 56.25%; /* יחס 16:9 קלאסי */
-            height: 0;
-            border-radius: 15px;
-            overflow: hidden;
-            margin: 20px 0;
-            border: 2px solid var(--white);
-        }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
-        /* המלצות */
-        .testimonial {
-            background: rgba(0,0,0,0.15);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            font-size: 15px;
-            border-right: 4px solid var(--accent-color);
-        }
-        .author { display: block; margin-top: 8px; font-weight: bold; color: var(--accent-color); }
-
-        /* רשימות */
-        .list-item { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 16px; }
-        .list-item span { color: var(--accent-color); font-weight: bold; }
-
-        /* טופס */
         .form-container { 
             background: var(--white); 
             color: var(--main-color); 
             padding: 30px 20px; 
             border-radius: 20px; 
             margin-top: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         input { 
             width: 100%; padding: 14px; margin-bottom: 12px; 
             border: 2px solid #eee; border-radius: 10px; 
-            font-size: 16px; text-align: right; font-family: inherit;
+            font-size: 16px; text-align: right;
         }
         .submit-btn { 
             width: 100%; padding: 16px; background: var(--main-color); 
@@ -145,10 +129,8 @@
             font-size: 18px; font-weight: bold; cursor: pointer;
         }
 
-        /* מובייל */
         @media (max-width: 480px) {
-            h1 { font-size: 26px; }
-            .profile-box { flex-direction: column; text-align: center; }
+            .profile-box { flex-direction: column; }
         }
     </style>
 </head>
@@ -156,7 +138,7 @@
 
 <div class="container">
     <div class="logo">
-        <img src="https://i.ibb.co/0jPts0Zr/Chat-GPT-Image-Feb-20-2026-04-06-03-PM.png" alt="לוגו הקסם שבבהירות">
+        <img src="https://i.ibb.co/0jPts0Zr/Chat-GPT-Image-Feb-20-2026-04-06-03-PM.png" alt="לוגו">
     </div>
     <span class="hero-subtitle">איך לייצר לעצמנו בהירות שמאפשרת קבלת החלטות מודעת גם בתוך עומס וחוסר ודאות</span>
     <h1>סדנה מעשית: "הקסם שבבהירות"</h1>
@@ -172,66 +154,38 @@
         </div>
     </div>
 
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/BFudxhVibO4" title="הקסם שבבהירות" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <div class="section" style="text-align: center;">
         <img src="https://i.ibb.co/RkB9QqvX/unnamed.png" alt="עצור" style="width: 80px; margin-bottom: 15px;">
-        <h2 style="border:none;">מה אם מה שחסר כאן הוא לא עוד ידע או חשיבה?</h2>
-        <p>בסדנה "הקסם שבבהירות" אנחנו מראות לכם דרך שמתחילה ביצירת מרווח בין גירוי לתגובה.</p>
+        <h2>מה אם מה שחסר כאן הוא לא עוד ידע או חשיבה?</h2>
+        <p>בסדנה אנחנו מראות לכם דרך שמתחילה ביצירת מרווח בין גירוי לתגובה.</p>
     </div>
 
     <a href="#register" class="cta-button">מתאים לי, תרשמו אותי</a>
 
     <div class="section">
-        <h2>צפו בסרטון קצר על הסדנה:</h2>
-        <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <div class="section">
         <h2>מה מחכה לכם בסדנה?</h2>
-        <p>בסדנה, יפית ואפרת מאפשרות לכל אחד ואחת לעבור תהליך אישי:</p>
-        <div style="margin-top:15px;">
-            <div class="list-item"><span>✓</span> הנחייה לצד תרגול חווייתי</div>
-            <div class="list-item"><span>✓</span> זיהוי המצפן הפנימי והחוזקות שלכם</div>
-            <div class="list-item"><span>✓</span> דוגמאות ועזרים גרפיים וויזואליים</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>מה אמרו המשתתפים?</h2>
-        <div class="testimonial">
-            "יפית יקרה, איזה מפגש מדהים! היה מעניין ועמוק, ויחד עם זה השעות חלפו בזרימה קלילה..."
-            <span class="author">(א. בעלת עסק)</span>
-        </div>
-        <div class="testimonial">
-            "בשבילי זו הייתה חוויה נהדרת, כזאת שהולכים הביתה ומעבדים בראש. משאיר טעם של עוד.. אני נהניתי מאוד❤️"
-            <span class="author">(ר. בפנסיה)</span>
-        </div>
-        <div class="testimonial">
-            "נהניתי מאוד, תודה רבה על הסדנה, תודה על ההזמנה 🩷 ממליצה באהבה."
-            <span class="author">(ל. בעלת עסק)</span>
-        </div>
-        <div class="testimonial">
-            "סדנא אינטימית, מאפשרת, הזדמנות להתבונן על הכוחות שמניעים אותנו... הייתן מדהימות, תודה על ההזדמנות."
-            <span class="author">(ח. בעלת עסק)</span>
-        </div>
+        <div class="list-item" style="display:flex; gap:10px; margin-bottom:10px;"><span>✓</span> הנחייה לצד תרגול חווייתי</div>
+        <div class="list-item" style="display:flex; gap:10px; margin-bottom:10px;"><span>✓</span> זיהוי המצפן הפנימי והחוזקות שלכם</div>
+        <div class="list-item" style="display:flex; gap:10px; margin-bottom:10px;"><span>✓</span> דוגמאות ועזרים גרפיים וויזואליים</div>
     </div>
 
     <div class="read-more-wrapper">
-        <button class="cta-button" style="font-size: 16px; margin: 10px 0;" id="readMoreBtn">אל תוותר על בהירות ביחס להחלטות שלכם - קראו עוד</button>
+        <button class="cta-button" style="font-size: 16px; margin: 10px 0;" id="readMoreBtn">אל תוותר על בהירות - קראו עוד</button>
         <div class="collapsible-content" id="extraInfo">
-            <div style="padding: 10px 0 20px 0;">
+            <div style="padding: 15px 0; text-align: right;">
                 <p><strong>להישאר בלי בהירות אומר:</strong></p>
-                <p>• חוויה של עומס פנימי, מחשבות שלא מפסיקות לרוץ ותחושת חוסר שקט</p>
+                <p>• חוויה של עומס פנימי וחוסר שקט</p>
                 <p>• התלבטות בין כיוונים ופעולה לא לפי סדרי עדיפויות</p>
-                <p>• חשיבה אינסופית על אותם דברים בלי להגיע לבהירות</p>
-                <p>• דחיית החלטות, או פעולה אימפולסיבית רק כדי “לסגור את זה”</p>
-                
-                <p style="margin-top: 15px;"><strong>לכן הסדנה מתאימה לכם אם חשוב לכם:</strong></p>
-                <p>• להרגיש יותר שקט ובהירות גם בתוך עומס ואי־ודאות</p>
-                <p>• להבין מה נכון עבורכם- ולא רק מה “נכון על הנייר”</p>
-                <p>• לצאת ממעגל של חשיבת יתר ולהיות בתנועה</p>
-                <p>• לפעול מתוך בחירה מודעת- ולא מתוך לחץ או דחייה</p>
+                <p>• חשיבה אינסופית בלי להגיע להחלטה</p>
+                <p style="margin-top:10px;"><strong>הסדנה מתאימה לכם אם חשוב לכם:</strong></p>
+                <p>• להרגיש שקט גם בתוך אי-ודאות</p>
+                <p>• לפעול מתוך בחירה מודעת</p>
             </div>
         </div>
     </div>
@@ -239,43 +193,40 @@
     <div class="section">
         <h2>מי אנחנו?</h2>
         <div class="profile-box">
-            <img src="https://i.ibb.co/PsFMN6X6/unnamed.jpg" alt="יפית נומברג" class="profile-img">
+            <img src="https://i.ibb.co/PsFMN6X6/unnamed.jpg" alt="יפית" class="profile-img">
             <p><strong>יפית נומברג:</strong> מאמנת ויועצת לקידום אישי.</p>
         </div>
         <div class="profile-box">
-            <img src="https://i.ibb.co/TDJ1b22y/unnamed-1.png" alt="אפרת אזולאי אפרים" class="profile-img">
-            <p><strong>אפרת אזולאי אפרים:</strong> יועצת מיתוג אישי בתהליכי שינוי.</p>
+            <img src="https://i.ibb.co/TDJ1b22y/unnamed-1.png" alt="אפרת" class="profile-img">
+            <p><strong>אפרת אזולאי אפרים:</strong> יועצת מיתוג אישי.</p>
         </div>
     </div>
 
     <div class="section" style="text-align: center; border: 2px solid var(--accent-color);">
         <h2>פרטי הסדנה</h2>
-        <p>📍 <strong>המרכז הרב תחומי, מודיעין</strong></p>
-        <p>🗓 <strong>יום ראשון, 24.5.2026</strong></p>
-        <p>⏰ <strong>19:00-21:00</strong></p>
-        <p style="margin-top:10px; font-weight: bold;">מספר המשתתפים מוגבל - הקדימו להירשם!</p>
+        <p>📍 המרכז הרב תחומי, מודיעין</p>
+        <p>🗓 יום ראשון, 24.5.2026 | ⏰ 19:00-21:00</p>
     </div>
 
     <div class="form-container" id="register">
-        <h2 style="color: #008b99; border:none;">שמרו לי מקום בסדנה</h2>
+        <h2 style="color: #008b99; margin-bottom:20px;">שמרו לי מקום</h2>
         <form id="landingForm">
             <input type="text" name="fullName" placeholder="שם מלא" required>
             <input type="email" name="email" placeholder="כתובת מייל" required>
             <input type="tel" name="phone" placeholder="מספר טלפון" required>
             <button type="submit" class="submit-btn" id="submitBtn">שמרו לי מקום</button>
         </form>
-        <div id="successMsg" style="display:none; margin-top:20px; font-weight:bold; color:green;">הפרטים נשלחו בהצלחה! נתראה בסדנה ❤️</div>
+        <div id="successMsg" style="display:none; margin-top:20px; font-weight:bold; color:green;">הפרטים נשלחו בהצלחה!</div>
     </div>
 </div>
 
 <script>
     const readMoreBtn = document.getElementById('readMoreBtn');
     const extraInfo = document.getElementById('extraInfo');
-    
     readMoreBtn.addEventListener('click', () => {
         if (extraInfo.style.maxHeight && extraInfo.style.maxHeight !== "0px") {
             extraInfo.style.maxHeight = "0px";
-            readMoreBtn.innerText = "אל תוותר על בהירות ביחס להחלטות שלכם - קראו עוד";
+            readMoreBtn.innerText = "אל תוותר על בהירות - קראו עוד";
         } else {
             extraInfo.style.maxHeight = extraInfo.scrollHeight + "px";
             readMoreBtn.innerText = "סגור מידע נוסף";
@@ -312,10 +263,8 @@
         } catch (err) {
             alert('תקלה בשליחה.');
             btn.disabled = false;
-            btn.innerText = 'שמרו לי מקום';
         }
     });
 </script>
-
 </body>
 </html>

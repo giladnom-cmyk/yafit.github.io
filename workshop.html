@@ -102,9 +102,9 @@
         .video-box {
             position: relative;
             width: 100%;
-            max-width: 315px; /* רוחב אופטימלי לסרטון אנכי */
+            max-width: 315px; 
             margin: 20px auto;
-            padding-bottom: 177.77%; /* יחס 9:16 */
+            padding-bottom: 177.77%; 
             height: 0;
             border-radius: 15px;
             overflow: hidden;
@@ -136,11 +136,30 @@
             margin-top: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        input { 
+        input[type="text"], input[type="email"], input[type="tel"] { 
             width: 100%; padding: 14px; margin-bottom: 12px; 
             border: 2px solid #eee; border-radius: 10px; 
             font-size: 16px; text-align: right; font-family: inherit;
         }
+        
+        /* עיצוב סקשן אישור תשלום */
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            text-align: right;
+            margin: 15px 0 20px 0;
+            color: #333333;
+            font-size: 14px;
+            cursor: pointer;
+            line-height: 1.4;
+        }
+        .checkbox-container input {
+            margin-top: 3px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
         .submit-btn { 
             width: 100%; padding: 16px; background: var(--main-color); 
             color: white; border: none; border-radius: 10px; 
@@ -172,6 +191,7 @@
             <div class="bubble">כיוון מקצועי שלא ברור אם ללכת עליו?</div>
             <div class="bubble">מרגיש/ה שאת/ה נותן/ת לכולם — אבל לא באמת לעצמך</div>
             <div class="bubble">"את/ה מגיב/ה באוטומט, ורק אחר כך חושב/ת: זה באמת מה שרציתי?"</div>
+            <div class="bubble-wrap"></div>
             <div class="bubble">או תחושה של עומס — בלי לדעת מאיפה להתחיל.</div>
         </div>
         
@@ -227,7 +247,7 @@
             <span class="author">(ל. בעלת עסק)</span>
         </div>
         <div class="testimonial">
-            "סדנא אינטימית, מאפשרת, הזדמנות להתבונן על הכוחות שמניעים אותנו בקבלת החלטות, לזהות אותם, לשיים, ולתפעל אותם טוב יותר. הייתן מדהימות, תודה על ההזדמנות."
+            "סדנא אינטימית, מאפשרת, הזדמנות להתבונן על הכוחות שמניעים אותנו בקבלת החלטות, לזהות אותם, לשיים, ולתפעל אותם טוב יותר. הייתן מדהימות, תודה על ההזמנות."
             <span class="author">(ח. בעלת עסק)</span>
         </div>
     </div>
@@ -267,22 +287,33 @@
         <p style="margin-top:15px; font-weight: 500;">יחד, יצרנו מרחב שהוא גם פרקטי וגם עמוק ואנושי, כזה שמאפשר לכל משתתף לעבור תהליך אמיתי כפרט וכקבוצה.</p>
     </div>
 
+    <!-- פרטי סדנה מעודכנים -->
     <div class="section" style="text-align: center; border: 2px solid var(--accent-color);">
         <h2>פרטי הסדנה</h2>
         <p>📍 <strong>המרכז הרב תחומי, מודיעין</strong></p>
-        <p>🗓 <strong>יום ראשון, 24.5.2026</strong></p>
-        <p>⏰ <strong>19:00-21:00</strong></p>
+        <p>🗓 <strong>יום ראשון, 26.07.2026</strong></p>
+        <p>⏰ <strong>שעה: 19:00</strong></p>
+        <p>💰 <strong>עלות: 140 ש"ח</strong></p>
         <p style="margin-top:10px; font-weight: bold;">מספר המשתתפים מוגבל - הקדימו להירשם!</p>
     </div>
 
+    <!-- טופס מעודכן -->
     <div class="form-container" id="register">
-        <h2 style="color: #008b99; border:none;">שמרו לי מקום בסדנה</h2>
+        <h2 style="color: #008b99; border:none; margin-bottom: 15px;">הרשמה לסדנה</h2>
         <form id="landingForm">
             <input type="text" name="fullName" placeholder="שם מלא" required>
-            <input type="email" name="email" placeholder="כתובת מייל" required> <input type="tel" name="phone" placeholder="מספר טלפון" required>
-            <button type="submit" class="submit-btn" id="submitBtn">שמרו לי מקום</button>
+            <input type="email" name="email" placeholder="כתובת מייל" required> 
+            <input type="tel" name="phone" placeholder="מספר טלפון" required>
+            
+            <!-- צ'קבוקס אישור עלות -->
+            <label class="checkbox-container">
+                <input type="checkbox" id="paymentApproval" required>
+                <span>אני מאשר/ת את הרשמתי ומודע/ת לכך שעלות הסדנה היא 140 ש"ח (פרטים להסדרת התשלום יישלחו במייל)</span>
+            </label>
+
+            <button type="submit" class="submit-btn" id="submitBtn">הרשמה לסדנה</button>
         </form>
-        <div id="successMsg" style="display:none; margin-top:20px; font-weight:bold; color:green;">הפרטים נשלחו בהצלחה! נתראה בסדנה ❤️</div>
+        <div id="successMsg" style="display:none; margin-top:20px; font-weight:bold; color:green;">הפרטים נשלחו בהצלחה! מייל עם פרטי התשלום בדרך אלייך ❤️</div>
     </div>
 
     <p style="margin: 30px 0; font-size: 14px; opacity: 0.8;">נתראה בסדנה, יפית ואפרת</p>
@@ -315,7 +346,7 @@
 
         const payload = {
             name: form.fullName.value,
-            email: form.email.value, // הוספת המייל לפיילואד
+            email: form.email.value, 
             phone: form.phone.value,
             source: 'modiin_workshop_v5_full_testimonials',
             timestamp: new Date().toISOString()
@@ -334,7 +365,7 @@
         } catch (err) {
             alert('תקלה בשליחה.');
             btn.disabled = false;
-            btn.innerText = 'שמרו לי מקום';
+            btn.innerText = 'הרשמה לסדנה';
         }
     });
 </script>
